@@ -2,7 +2,7 @@
 {
     public class WeeklyTimetable
     {
-        public string Name { get; set; }
+        public string Dto { get; set; }
 
     }
 }
