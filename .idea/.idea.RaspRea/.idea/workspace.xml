@@ -4,15 +4,22 @@
     <projectFile>RaspRea/RaspRea.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aef137f4-5747-4b1c-b490-9c15c3190e75" name="Default Changelist" comment="" />
+    <list default="true" id="aef137f4-5747-4b1c-b490-9c15c3190e75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RaspRea/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RaspRea/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RaspRea/obj/Debug/net5.0/RaspRea.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/RaspRea/obj/Debug/net5.0/RaspRea.csproj.AssemblyReference.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/RaspRea/Application/ScheduleParser.cs" />
+      <option value="$PROJECT_DIR$/RaspRea/Dto/WeeklyTimetable.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="21Hn8yjDPQhbBJj4Bbr6jYxfvyl" />
@@ -52,15 +59,39 @@
       <option name="presentableId" value="Default" />
       <updated>1637606726434</updated>
       <workItem from="1637606735475" duration="252000" />
+      <workItem from="1637660778079" duration="143000" />
+      <workItem from="1637661077921" duration="947000" />
     </task>
+    <task id="LOCAL-00001" summary="[TASK-1] Can I push?">
+      <created>1637660873268</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637660873268</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="[TASK-1] Can I push?" />
+    <option name="LAST_COMMIT_MESSAGE" value="[TASK-1] Can I push?" />
   </component>
 </project>
