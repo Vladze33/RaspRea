@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RaspRea.Application;
@@ -16,12 +19,13 @@ namespace RaspRea.Controllers
         /// </summary>
         /// <returns>Weekly timetable</returns>
         [HttpGet]
-        [Route("/GetWeeklyTimetable/{week:long}")]
+        [Route("/GetWeeklyTimetable/")]
+        [Produces("application/json")]
         [ProducesResponseType(typeof(WeeklyTimetable), StatusCodes.Status200OK)]
-        public async Task<WeeklyTimetable> GetWeeklyTimetable([FromRoute] long week)
+        public async Task<List<DailyTimetable>> GetWeeklyTimetable([FromQuery] int week, [FromQuery] string group)
         {
-            await _parser.GetWeeklyTimeTable();
-            return null;
+            var listOfDays = await _parser.GetWeeklyTimeTable(group, week);
+            return listOfDays;
         }
         
     }

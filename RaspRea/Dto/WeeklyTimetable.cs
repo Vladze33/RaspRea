@@ -1,8 +1,9 @@
-﻿namespace RaspRea.Dto
+﻿using System.Collections.Generic;
+
+namespace RaspRea.Dto
 {
     public class WeeklyTimetable
     {
-        public string Dto { get; set; }
-
+        public List<DailyTimetable> DailyTimetables { get; set; }
     }
 }
