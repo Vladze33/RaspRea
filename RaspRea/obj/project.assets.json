@@ -353,27 +353,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {}
+    "C:\\Users\\alekdemidov\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\RaspRea\\RaspRea\\RaspRea.csproj",
+      "projectUniqueName": "C:\\Users\\alekdemidov\\Desktop\\RaspRea\\RaspRea\\RaspRea.csproj",
       "projectName": "RaspRea",
-      "projectPath": "C:\\Users\\admin\\Desktop\\RaspRea\\RaspRea\\RaspRea.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\RaspRea\\RaspRea\\obj\\",
+      "projectPath": "C:\\Users\\alekdemidov\\Desktop\\RaspRea\\RaspRea\\RaspRea.csproj",
+      "packagesPath": "C:\\Users\\alekdemidov\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alekdemidov\\Desktop\\RaspRea\\RaspRea\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\alekdemidov\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\LocalNugetStore": {},
+        "C:\\Users\\alekdemidov\\Documents\\Nuget": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.ozon.ru/nuget": {}
       },
       "frameworks": {
         "net5.0": {
