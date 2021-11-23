@@ -21,7 +21,7 @@ namespace RaspRea.Application
 
         public async Task<List<DailyTimetable>> GetWeeklyTimeTable(string groupName, int week)
         {
-            var htmlEncodeGroup = HttpUtility.HtmlEncode(groupName);
+            var htmlEncodeGroup = HttpUtility.HtmlEncode(groupName.ToLower());
             var request = new HttpRequestMessage() {
                 RequestUri = new Uri($"https://rasp.rea.ru/Schedule/ScheduleCard?selection={htmlEncodeGroup}&weekNum={week}&catfilter=0"),
                 Method = HttpMethod.Get,
