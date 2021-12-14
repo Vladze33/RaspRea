@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using RaspRea.Dto;
+using StackExchange.Redis;
 
 namespace RaspRea.Controllers
 {
@@ -11,10 +12,10 @@ namespace RaspRea.Controllers
     [Route("[controller]")]
     public class LoginController : ControllerBase
     {
-        private readonly IDistributedCache _cache;
-        public LoginController(IDistributedCache cache)
+        private readonly IConnectionMultiplexer _redis;
+        public LoginController(IConnectionMultiplexer redis)
         {
-            _cache = cache;
+            _redis = redis;
         }
         
         [HttpGet]
@@ -23,11 +24,12 @@ namespace RaspRea.Controllers
         [ProducesResponseType(typeof(UserCredentials), StatusCodes.Status200OK)]
         public async Task<UserCredentials> GetUserFromRedis([FromQuery] string login)
         {
-            var password = await _cache.GetStringAsync(login);
+            var db = _redis.GetDatabase();
+            var group = await db.StringGetAsync(login);
             UserCredentials userCredentials = new UserCredentials
             {
                 Login = login,
-                Password = password
+                Group = group.ToString()
             };
             return userCredentials;
         }
@@ -36,12 +38,12 @@ namespace RaspRea.Controllers
         [Route("/PostUser/")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(UserCredentials), StatusCodes.Status200OK)]
-        public async Task<UserCredentials> PostUserIntoRedis([FromQuery] string login, [FromQuery] string password)
+        public async Task<UserCredentials> PostUserIntoRedis([FromQuery] string login, [FromQuery] string group)
         {
-            if (_cache.GetStringAsync(login) != null)
-                await _cache.SetStringAsync(login, password);
+            var db = _redis.GetDatabase();
+            var user = await db.StringSetAsync(login, group);
 
-            return new UserCredentials{ Login = login, Password = password };
+            return new UserCredentials{ Login = login, Group = group };
         }
         
     }

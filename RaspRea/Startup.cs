@@ -1,18 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 
 namespace RaspRea
 {
@@ -37,12 +29,16 @@ namespace RaspRea
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
-            
-            services.AddStackExchangeRedisCache(options =>
+
+            var configurationOptions = new ConfigurationOptions
             {
-                options.Configuration = Configuration.GetSection("Redis")["ConnectionString"];
-            });
-            services.Add(ServiceDescriptor.Singleton<IDistributedCache, RedisCache>());
+                EndPoints = {"soapfish.redistogo.com:9137"},
+                Password = "d88eea9700f0661b836fc92254a462a4",
+                AbortOnConnectFail = false
+            };
+
+            var multiplexer = ConnectionMultiplexer.Connect(configurationOptions); 
+            services.AddSingleton<IConnectionMultiplexer>(multiplexer);
             
         }
 
