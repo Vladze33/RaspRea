@@ -46,5 +46,17 @@ namespace RaspRea.Controllers
             return new UserCredentials{ Login = login, Group = group };
         }
         
+        [HttpPost]
+        [Route("/EditUser/")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(UserCredentials), StatusCodes.Status200OK)]
+        public async Task<UserCredentials> EditUserIntoRedis([FromQuery] string login, [FromQuery] string group)
+        {
+            var db = _redis.GetDatabase();
+            var user = await db.KeyRenameAsync(login, group);
+
+            return new UserCredentials{ Login = login, Group = group };
+        }
+        
     }
 }

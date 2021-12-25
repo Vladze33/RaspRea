@@ -26,5 +26,19 @@ namespace RaspRea.Controllers
             return listOfDays;
         }
         
+        /// <summary>
+        /// Return details of class
+        /// </summary>
+        /// <returns>Weekly timetable</returns>
+        [HttpGet]
+        [Route("/GetDetails/")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(ClassInfo), StatusCodes.Status200OK)]
+        public async Task<ClassInfo> GetDetails([FromQuery]string selection, [FromQuery]string date, [FromQuery]string timeSlot)
+        {
+            var details = await _parser.GetDetails(selection, date, timeSlot);
+            return details;
+        }
+        
     }
 }

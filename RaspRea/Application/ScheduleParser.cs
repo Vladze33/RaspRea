@@ -37,6 +37,38 @@ namespace RaspRea.Application
 
         }
 
+        public async Task<ClassInfo> GetDetails(string selection, string date, string timeSlot)
+        {
+            var htmlEncodeGroup = HttpUtility.HtmlEncode(selection.ToLower());
+            var request = new HttpRequestMessage() {
+                RequestUri = new Uri($"https://rasp.rea.ru/Schedule/GetDetails?selection={htmlEncodeGroup}&date={date}&timeSlot={timeSlot}"),
+                Method = HttpMethod.Get,
+            };
+            request.Headers.Add("Accept", "text/html, */*; q=0.01");
+            request.Headers.Add("X-Requested-With", "XMLHttpRequest");
+            
+            var resultContent = await _client.SendAsync(request);
+            var result = await resultContent.Content.ReadAsStringAsync();
+            var parsResult = _parser.ParseDocument(result);
+
+            return ParseDetails(parsResult);
+        }
+
+        public ClassInfo ParseDetails(IHtmlDocument parsResult)
+        {
+            var classInfo = new ClassInfo();
+            var parsSelector = parsResult.QuerySelectorAll("*")[2].TextContent.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+            classInfo.Name = parsSelector[0].Trim();
+            classInfo.Type = parsSelector[1].Trim();
+            classInfo.Date = parsSelector[2].Trim();
+            classInfo.Building = parsSelector[4].Trim().TrimEnd('-').Trim();
+            classInfo.Room = parsSelector[5].Trim();
+            classInfo.Teacher = parsSelector[17].Trim().Remove(0, 7);
+            classInfo.Сhair = parsSelector[20].Trim().TrimStart('(').TrimEnd(')');
+            
+            return classInfo;
+        }
+
         public List<DailyTimetable> ParseWeek(IHtmlDocument parsResult)
         {
             var week = new List<DailyTimetable>();
